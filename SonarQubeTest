@@ -1,0 +1,5 @@
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=SonarQube
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=sqp_e8d15bc316e440524712bffb1c74a8d53a0e083c
+
