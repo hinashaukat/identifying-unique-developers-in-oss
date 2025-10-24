@@ -1,4 +1,8 @@
+# Git
+.git
+.gitignore
 
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -20,38 +24,31 @@ wheels/
 .installed.cfg
 *.egg
 
-.venv/
+# Virtual environments
 venv/
-ENV/
 env/
+ENV/
 
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-
+# OS
 .DS_Store
 Thumbs.db
 
+# Project specific
+output/
+data/
+reports/
+*.log
 
-.git/
-.gitignore
-
-Dockerfile*
-docker-compose*
+# Docker
+Dockerfile
+docker-compose.yml
 .dockerignore
 
-README.md
-*.md
-
-tests/
-.pytest_cache/
-.coverage
-htmlcov/
-
-reports/
-
-*.log
-logs/
+# SonarQube
+sonar-project.properties

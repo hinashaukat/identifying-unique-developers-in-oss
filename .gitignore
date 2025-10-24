@@ -59,3 +59,5 @@ venv.bak/
 /data/raw/
 /logs/
 /output/
+
+.scannerwork/
