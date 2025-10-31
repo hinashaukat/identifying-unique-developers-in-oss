@@ -117,3 +117,12 @@ After running SonarQube analysis, you can:
 2. Download reports in various formats (PDF, CSV, etc.)
 3. Set up quality gates for continuous integration
 4. Track technical debt and code smells
+
+## Running tests
+
+To run tests separately outside of SonarQube, you can run:
+```bash
+pytest tests/test_datacompare.py
+# OR
+pytest tests/test_utils.py
+```
