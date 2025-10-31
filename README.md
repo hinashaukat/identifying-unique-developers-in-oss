@@ -19,6 +19,7 @@ based on the approach of Bird et al. (MSR 2006).
    ```bash
    pip install -r requirements.txt
    ```
+3. [See section Usage for further instructions](#usage).
 
 ### Option 2: Docker Setup
 
@@ -42,6 +43,39 @@ based on the approach of Bird et al. (MSR 2006).
    # Stop all services
    docker-compose down
    ```
+
+## Usage
+
+### Basic Usage
+
+```bash
+# Analyze a repository
+python src/main.py --repo https://github.com/numpy/numpy --threshold 0.85
+
+# With Docker
+docker run -v $(pwd)/output:/app/output unique-developers-app --repo https://github.com/numpy/numpy --threshold 0.85
+```
+
+### Advanced Options
+
+```bash
+# Limit commits and pairs for faster analysis
+python src/main.py --repo https://github.com/torvalds/linux --threshold 0.8 --max-commits 5000 --max-pairs 2000
+
+# Skip extraction and use existing data
+python src/main.py --repo https://github.com/microsoft/vscode --skip-extraction --threshold 0.9
+
+# Clean repository after analysis
+python src/main.py --repo https://github.com/numpy/numpy --clean-repo
+```
+
+## Output
+
+The analysis generates several output files in the `output/` directory:
+- `{repo_name}_bird_duplicates.csv` - Duplicates found by Bird heuristic
+- `{repo_name}_improved_duplicates.csv` - Duplicates found by improved heuristic
+- `{repo_name}_summary.json` - Complete analysis results
+- `{repo_name}_report.md` - Human-readable report
 
 ## SonarQube Code Analysis
 
@@ -83,36 +117,3 @@ After running SonarQube analysis, you can:
 2. Download reports in various formats (PDF, CSV, etc.)
 3. Set up quality gates for continuous integration
 4. Track technical debt and code smells
-
-## Usage
-
-### Basic Usage
-
-```bash
-# Analyze a repository
-python src/main.py --repo https://github.com/numpy/numpy --threshold 0.85
-
-# With Docker
-docker run -v $(pwd)/output:/app/output unique-developers-app --repo https://github.com/numpy/numpy --threshold 0.85
-```
-
-### Advanced Options
-
-```bash
-# Limit commits and pairs for faster analysis
-python src/main.py --repo https://github.com/torvalds/linux --threshold 0.8 --max-commits 5000 --max-pairs 2000
-
-# Skip extraction and use existing data
-python src/main.py --repo https://github.com/microsoft/vscode --skip-extraction --threshold 0.9
-
-# Clean repository after analysis
-python src/main.py --repo https://github.com/numpy/numpy --clean-repo
-```
-
-## Output
-
-The analysis generates several output files in the `output/` directory:
-- `{repo_name}_bird_duplicates.csv` - Duplicates found by Bird heuristic
-- `{repo_name}_improved_duplicates.csv` - Duplicates found by improved heuristic
-- `{repo_name}_summary.json` - Complete analysis results
-- `{repo_name}_report.md` - Human-readable report
